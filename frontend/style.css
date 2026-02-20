@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f2f2f2;
+}
+
+.header {
+  background: #c40000;
+  color: white;
+  text-align: center;
+  padding: 30px 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.container {
+  width: 500px;
+  margin: 60px auto;
+  background: #e6e6e6;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.form-group label {
+  width: 120px;
+  font-size: 18px;
+}
+
+.form-group input {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.login-btn {
+  background: #c40000;
+  color: white;
+  border: none;
+}
+
+.register-btn {
+  background: transparent;
+  color: #c40000;
+  border: 2px solid #c40000;
+}

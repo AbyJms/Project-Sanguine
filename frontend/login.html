@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sanguine Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            display: block;
+            background: #f2f2f2;
+        }
+        .login-box {
+            width: 400px;
+            margin: 120px auto;
+            background: #e6e6e6;
+            padding: 40px;
+        }
+        .topbar {
+            background: #8b0000;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">SANGUINE</div>
+
+<div class="login-box">
+    <div class="form-group">
+        <label>Username:</label>
+        <input type="text" id="username">
+    </div>
+
+    <div class="form-group">
+        <label>Password:</label>
+        <input type="password" id="password">
+    </div>
+
+    <button onclick="login()">Login</button>
+    <button onclick="location.href='register.html'" style="background:white;color:#8b0000;border:2px solid #8b0000;">
+        Register
+    </button>
+</div>
+
+<script src="login.js"></script>
+</body>
+</html>
