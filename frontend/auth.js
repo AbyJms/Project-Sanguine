@@ -14,8 +14,19 @@
     if (!r.ok) {
       localStorage.removeItem("token");
       location.href = "login.html";
+      return;
     }
-  } catch (e) {
+
+    const u = await r.json();
+
+    // store user globally
+    window.currentUser = u;
+
+    // fill username if element exists
+    const el = document.getElementById("loggedUser");
+    if (el) el.textContent = u.username;
+
+  } catch {
     location.href = "login.html";
   }
 })();

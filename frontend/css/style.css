@@ -14,7 +14,7 @@ body {
 .sidebar {
     width: 220px;
     height: 100vh;
-    background-color: #8b0000;
+    background-color: #d61515;
     color: white;
     padding-top: 20px;
     position: fixed;
@@ -36,7 +36,7 @@ body {
 }
 
 .sidebar a:hover {
-    background-color: #a80000;
+    background-color: #d61515;
 }
 
 /* Main content */
@@ -55,12 +55,12 @@ body {
 }
 
 .card h2 {
-    color: #8b0000;
+    color: #d61515;
     margin-bottom: 15px;
 }
 
 button {
-    background-color: #8b0000;
+    background-color: #d61515;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -71,7 +71,7 @@ button {
 }
 
 button:hover {
-    background-color: #a80000;
+    background-color: #d61515;
 }
 
 /* Forms */
@@ -106,6 +106,40 @@ table th, table td {
 }
 
 table th {
-    background-color: #8b0000;
+    background-color: #d61515;
     color: white;
+}
+
+/* === MODERN UPGRADE === */
+
+body {
+    background: #f8f9fa;
+}
+
+/* smoother cards */
+.card {
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* modern buttons */
+button {
+    border-radius: 25px;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+/* sidebar polish */
+.sidebar {
+    box-shadow: 3px 0 12px rgba(0,0,0,0.08);
+}
+
+/* tables cleaner */
+table {
+    border-radius: 10px;
+    overflow: hidden;
 }

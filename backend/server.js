@@ -29,6 +29,24 @@ app.get("/api/me", auth, (req, res) => {
   res.json(req.user);
 });
 
+//profile route
+app.get("/api/profile", auth, async (req, res) => {
+  try {
+    const [rows] = await db.query(
+      "SELECT Username, Name, Blood_Type, Gmail, Mobile_No, district_name, city_name FROM user_table WHERE Username = ?",
+      [req.user.username]
+    );
+
+    if (rows.length === 0) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
+    res.json(rows[0]);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 
 // health
 app.get("/api/health", (req, res) => {
