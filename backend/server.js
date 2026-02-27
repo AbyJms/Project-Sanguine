@@ -24,18 +24,48 @@ function auth(req, res, next) {
   }
 }
 
-
 app.get("/api/me", auth, (req, res) => {
   res.json(req.user);
 });
 
-//profile route
+// profile route
 app.get("/api/profile", auth, async (req, res) => {
   try {
-    const { rows } = await db.query(
-      'SELECT "Username","Name","Blood_Type","Gmail","Mobile_No",district_name,city_name FROM user_table WHERE "Username" = $1',
-      [req.user.username]
-    );
+    const role = req.user.role;
+    const id = req.user.id;
+
+    let q = "";
+
+    if (role === "Client") {
+      q = `
+        SELECT u.username, c.name, c.blood_type, c.gmail, c.mobile_no,
+               ci.city_name, d.district_name
+        FROM users u
+        JOIN client c ON c.id = u.id
+        LEFT JOIN cities ci ON ci.city_id = c.city_id
+        LEFT JOIN districts d ON d.district_id = ci.district_id
+        WHERE u.id = $1
+      `;
+    } else if (role === "Hospital") {
+      q = `
+        SELECT u.username, h.name, h.gmail, h.mobile_no,
+               ci.city_name, d.district_name
+        FROM users u
+        JOIN hospital h ON h.id = u.id
+        LEFT JOIN cities ci ON ci.city_id = h.city_id
+        LEFT JOIN districts d ON d.district_id = ci.district_id
+        WHERE u.id = $1
+      `;
+    } else if (role === "Admin") {
+      q = `
+        SELECT u.username, a.name, a.is_head_admin
+        FROM users u
+        JOIN admin a ON a.id = u.id
+        WHERE u.id = $1
+      `;
+    }
+
+    const { rows } = await db.query(q, [id]);
 
     if (rows.length === 0) {
       return res.status(404).json({ msg: "User not found" });
@@ -46,7 +76,6 @@ app.get("/api/profile", auth, async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
 
 // health
 app.get("/api/health", (req, res) => {
@@ -69,7 +98,7 @@ app.post("/api/login", async (req, res) => {
     const { username, password } = req.body;
 
     const { rows } = await db.query(
-      'SELECT * FROM user_table WHERE "Username" = $1',
+      "SELECT id, username, password, role FROM users WHERE username = $1",
       [username]
     );
 
@@ -79,15 +108,15 @@ app.post("/api/login", async (req, res) => {
 
     const user = rows[0];
 
-    // plain compare (since your Java app likely stored plain passwords)
-    if (user.Password !== password) {
+    if (user.password !== password) {
       return res.status(401).json({ msg: "Invalid credentials" });
     }
 
     const token = jwt.sign(
       {
-        username: user.Username,
-        role: user.Role,
+        username: user.username,
+        role: user.role,
+        id: user.id,
       },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
@@ -95,10 +124,11 @@ app.post("/api/login", async (req, res) => {
 
     res.json({
       token,
-      role: user.Role,
-      username: user.Username,
+      role: user.role,
+      username: user.username,
     });
   } catch (err) {
+    console.error("LOGIN ERROR:", err);
     res.status(500).json({ error: err.message });
   }
 });
