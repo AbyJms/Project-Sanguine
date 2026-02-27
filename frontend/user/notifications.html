@@ -1,36 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
+  <head>
     <title>Notifications</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h1>Sanguine</h1>
+      <a href="home.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="history.html">History</a>
+      <a href="notifications.html">Notifications</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
 
-<div class="sidebar">
-    <h1>Sanguine</h1>
-    <a href="home.html">Home</a>
-    <a href="profile.html">Profile</a>
-    <a href="history.html">History</a>
-    <a href="notifications.html">Notifications</a>
-    <a href="#" onclick="logout()">Logout</a>
-</div>
+    <div class="main">
+      <h2>Notifications</h2>
 
-<div class="main">
-    <h2>Notifications</h2>
-
-    <table>
+      <table>
         <tr>
-            <th>Acceptor Name</th>
-            <th>Mobile</th>
-            <th>Blood</th>
-            <th>City</th>
-            <th>Quantity</th>
+          <th>Acceptor Name</th>
+          <th>Mobile</th>
+          <th>Blood</th>
+          <th>City</th>
+          <th>Quantity</th>
         </tr>
-    </table>
-</div>
+      </table>
+    </div>
 
-<script src="auth.js"></script>
-<script src="logout.js"></script>
-
-</body>
+    <script src="auth.js"></script>
+    <script src="logout.js"></script>
+  </body>
 </html>
