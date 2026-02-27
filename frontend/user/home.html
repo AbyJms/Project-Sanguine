@@ -1,38 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
+  <head>
     <title>Sanguine - Home</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-<div class="sidebar">
-    <h1>Sanguine</h1>
-    <a href="home.html">Home</a>
-    <a href="profile.html">Profile</a>
-    <a href="history.html">History</a>
-    <a href="notifications.html">Notifications</a>
-    <a href="#" onclick="logout()">Logout</a>
-</div>
-
-<div class="main">
-    <h1>Welcome, <span id="loggedUser"></span></h1>
-
-    <div class="card">
-        <h2>REQUEST BLOOD</h2>
-        <p>Submit a request for blood by specifying quantity and location.</p>
-        <button onclick="location.href='request.html'">Request Now</button>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h1>Sanguine</h1>
+      <a href="home.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="history.html">History</a>
+      <a href="notifications.html">Notifications</a>
+      <a href="#" onclick="logout()">Logout</a>
     </div>
 
-    <div class="card">
+    <div class="main">
+      <h1>Welcome, <span id="loggedUser"></span></h1>
+
+      <div class="card">
+        <h2>REQUEST BLOOD</h2>
+        <p>Submit a request for blood by specifying quantity and location.</p>
+        <button onclick="location.href = 'request.html'">Request Now</button>
+      </div>
+
+      <div class="card">
         <h2>View Eligibility Status</h2>
         <p>Check your donation cool-down status.</p>
         <button>Check Status</button>
+      </div>
     </div>
-</div>
 
-<script src="auth.js"></script>
-<script src="logout.js"></script>
-
-</body>
+    <script src="auth.js"></script>
+    <script src="logout.js"></script>
+  </body>
 </html>
