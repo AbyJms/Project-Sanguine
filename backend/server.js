@@ -32,8 +32,8 @@ app.get("/api/me", auth, (req, res) => {
 //profile route
 app.get("/api/profile", auth, async (req, res) => {
   try {
-    const [rows] = await db.query(
-      "SELECT Username, Name, Blood_Type, Gmail, Mobile_No, district_name, city_name FROM user_table WHERE Username = ?",
+    const { rows } = await db.query(
+      'SELECT "Username","Name","Blood_Type","Gmail","Mobile_No",district_name,city_name FROM user_table WHERE "Username" = $1',
       [req.user.username]
     );
 
@@ -56,7 +56,7 @@ app.get("/api/health", (req, res) => {
 // DB test
 app.get("/api/db-test", async (req, res) => {
   try {
-    const [rows] = await db.query("SELECT 1 AS test");
+    const { rows } = await db.query("SELECT 1 AS test");
     res.json(rows);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -68,8 +68,8 @@ app.post("/api/login", async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    const [rows] = await db.query(
-      "SELECT * FROM user_table WHERE Username = ?",
+    const { rows } = await db.query(
+      'SELECT * FROM user_table WHERE "Username" = $1',
       [username]
     );
 

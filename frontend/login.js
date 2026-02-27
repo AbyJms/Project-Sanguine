@@ -17,7 +17,8 @@ async function login() {
 
   localStorage.setItem("token", data.token);
 
-  if (data.role === "Admin") location.href = "home.html";
-  else if (data.role === "Client") location.href = "home.html";
-  else if (data.role === "Hospital") location.href = "home.html";
+  // ✅ FIXED ROUTING
+  if (data.role === "Admin") location.href = "admin/home.html";
+  else if (data.role === "Hospital") location.href = "hospital/home.html";
+  else location.href = "user/home.html"; // Client default
 }
