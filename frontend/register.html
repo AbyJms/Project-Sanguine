@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Sanguine Register</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="topbar">SANGUINE</div>
+
+    <div class="card">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" required />
+      </div>
+
+      <div class="form-group">
+        <label>User Name</label>
+        <input type="text" required />
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" required />
+      </div>
+
+      <div class="form-group">
+        <label>Blood Type</label>
+        <div class="blood-group">
+          <input type="radio" id="a_plus" name="blood" />
+          <label for="a_plus" class="blood-btn">A+</label>
+
+          <input type="radio" id="a_minus" name="blood" />
+          <label for="a_minus" class="blood-btn">A-</label>
+
+          <input type="radio" id="b_plus" name="blood" />
+          <label for="b_plus" class="blood-btn">B+</label>
+
+          <input type="radio" id="b_minus" name="blood" />
+          <label for="b_minus" class="blood-btn">B-</label>
+
+          <input type="radio" id="o_plus" name="blood" />
+          <label for="o_plus" class="blood-btn">O+</label>
+
+          <input type="radio" id="o_minus" name="blood" />
+          <label for="o_minus" class="blood-btn">O-</label>
+
+          <input type="radio" id="ab_plus" name="blood" />
+          <label for="ab_plus" class="blood-btn">AB+</label>
+
+          <input type="radio" id="ab_minus" name="blood" />
+          <label for="ab_minus" class="blood-btn">AB-</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Mail ID</label>
+        <input
+          type="email"
+          pattern=".+@gmail\.com"
+          placeholder="example@gmail.com"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Mobile Number</label>
+        <input type="tel" pattern="[0-9]{10}" maxlength="10" required />
+      </div>
+
+      <div class="form-group">
+        <label>District</label>
+        <select required>
+          <option value="">Select District</option>
+          <option>Ernakulam</option>
+          <option>Kozhikode</option>
+          <option>Thrissur</option>
+          <option>Trivandrum</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>City</label>
+        <select required>
+          <option value="">Select City</option>
+          <option>Aluva</option>
+          <option>Kakkanad</option>
+          <option>Kochi</option>
+          <option>Calicut</option>
+        </select>
+      </div>
+
+      <button class="primary-btn">Register</button>
+
+      <div class="link-text">
+        Already have an account?
+        <a href="login.html">Login here</a>
+      </div>
+    </div>
+  </body>
+</html>

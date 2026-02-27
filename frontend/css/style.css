@@ -192,7 +192,7 @@ tr:hover {
     background: #fff5f5;
 }
 /* =====================
-   CHECK STATUS RESULT BOX
+    CHECK STATUS RESULT BOX
 ===================== */
 
 .status-message {
@@ -219,10 +219,9 @@ tr:hover {
 }
 
 /* =====================
-    LOGIN PAGE
+    LOGIN/REGISTER PAGE
 ===================== */
 
-/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -230,14 +229,13 @@ tr:hover {
   font-family: "Segoe UI", sans-serif;
 }
 
-/* Page Background */
 body {
-  height: 100vh;
+  min-height: 100vh;
   background: #eeeeee;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Title */
@@ -246,24 +244,21 @@ body {
   font-weight: 800;
   letter-spacing: 6px;
   color: #b30000;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 }
 
-/* Login Box */
-.login-box {
-  width: 420px;
-  padding: 45px;
-  border-radius: 18px;
-
-  /* Gradient */
-  background: linear-gradient(to bottom right, #ff7b7b, #ff3c3c);
-
-  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.15);
+/* Card */
+.card {
+  width: 600px;
+  padding: 55px 70px;
+  border-radius: 20px;
+  background: #b30000;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.18);
 }
 
-/* Form */
+/* Form spacing */
 .form-group {
-  margin-bottom: 25px;
+  margin-bottom: 24px;
 }
 
 label {
@@ -271,44 +266,84 @@ label {
   margin-bottom: 8px;
   color: white;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-/* Inputs */
-input {
+input,
+select {
   width: 100%;
   padding: 14px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
   outline: none;
   font-size: 14px;
-  background: #f1f1f1;
+  background: #f4f4f4;
 }
 
 /* Buttons */
 button {
   width: 100%;
-  padding: 14px;
-  margin-top: 15px;
-  border-radius: 10px;
+  padding: 15px;
+  border-radius: 12px;
   border: none;
   font-weight: 600;
+  font-size: 15px;
   cursor: pointer;
+  margin-top: 15px;
+}
+
+.primary-btn {
+  background: white;
+  color: #b30000;
+}
+
+.primary-btn:hover {
+  background: #ffeaea;
+}
+
+.link-text {
+  margin-top: 20px;
+  text-align: center;
+  color: white;
   font-size: 14px;
 }
 
-/* Login button */
-button:first-of-type {
-  background: #ffffff;
-  color: #b30000;
+.link-text a {
+  color: white;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
-/* Register button */
-button:last-of-type {
-  background: #ffffff;
+/* Blood Group */
+.blood-group {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.blood-group input {
+  display: none;
+}
+
+.blood-btn {
+  background: #f4f4f4;
   color: #b30000;
+  padding: 12px 0;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.blood-group input:checked + .blood-btn {
+  background: #ffd6d6;   /* light red shade */
   border: 2px solid #b30000;
+  color: #b30000;        /* text stays visible */
 }
 
+.form-group > label {
+  color: white;
+}
 /*
 ===================== */
