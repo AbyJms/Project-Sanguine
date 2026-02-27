@@ -1,156 +1,9 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
+/* =====================
+   RESET
+===================== */
+html {
+    font-size: 20px;
 }
-
-body {
-    display: flex;
-    background-color: #f2f2f2;
-}
-
-/* Sidebar */
-.sidebar {
-    width: 220px;
-    height: 100vh;
-    background-color: #d61515;
-    color: white;
-    padding-top: 20px;
-    position: fixed;
-}
-
-.sidebar h1 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 26px;
-}
-
-.sidebar a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    padding: 15px 30px;
-    font-size: 16px;
-    transition: 0.3s;
-}
-
-.sidebar a:hover {
-    background-color: #d61515;
-}
-
-/* Main content */
-.main {
-    margin-left: 220px;
-    padding: 40px;
-    width: 100%;
-}
-
-.card {
-    background-color: white;
-    padding: 30px;
-    margin-bottom: 30px;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.card h2 {
-    color: #d61515;
-    margin-bottom: 15px;
-}
-
-button {
-    background-color: #d61515;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    margin-top: 15px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-button:hover {
-    background-color: #d61515;
-}
-
-/* Forms */
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    font-weight: 600;
-    display: block;
-    margin-bottom: 5px;
-}
-
-input, select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* Table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-}
-
-table th, table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
-
-table th {
-    background-color: #d61515;
-    color: white;
-}
-
-/* === MODERN UPGRADE === */
-
-body {
-    background: #f8f9fa;
-}
-
-/* smoother cards */
-.card {
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-}
-
-/* modern buttons */
-button {
-    border-radius: 25px;
-    font-weight: 600;
-    transition: 0.25s ease;
-}
-
-button:hover {
-    transform: translateY(-1px);
-}
-
-/* sidebar polish */
-.sidebar {
-    box-shadow: 3px 0 12px rgba(0,0,0,0.08);
-}
-
-/* tables cleaner */
-table {
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-/*
-
-
-
-
-*/
-
 
 * {
     margin: 0;
@@ -162,144 +15,205 @@ table {
 body {
     display: flex;
     min-height: 100vh;
-    background-color: #f4f6f9;
+    background: #f4f6f9;
 }
 
-/* Sidebar */
+/* =====================
+   SIDEBAR
+===================== */
 
 .sidebar {
     width: 230px;
-    background: #b30000;
+    background: linear-gradient(180deg, #d90429, #9d0208);
     color: white;
     padding: 30px 20px;
     position: fixed;
-    height: 100%;
+    height: 100vh;
 }
 
-.sidebar h2 {
+.sidebar h1 {
     margin-bottom: 40px;
-    font-size: 26px;
 }
 
 .sidebar a {
     display: block;
-    color: white;
     text-decoration: none;
-    margin: 18px 0;
-    font-size: 16px;
+    color: white;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
     transition: 0.3s;
 }
 
 .sidebar a:hover {
-    padding-left: 8px;
-    opacity: 0.8;
+    background: rgba(255,255,255,0.2);
 }
 
-/* Main Content */
+/* =====================
+   MAIN AREA
+===================== */
 
 .main {
     margin-left: 230px;
-    padding: 40px;
+    padding: 60px;
     width: 100%;
 }
 
 .main h1 {
-    margin-bottom: 30px;
-    color: #333;
+    margin-bottom: 40px;
+    color: #d90429;
 }
 
-/* Cards (Dashboard) */
-
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
+/* =====================
+   FORM CARD (Request + Edit Profile)
+===================== */
 
 .card {
+    max-width: 600px;
+    margin: 40px auto;
     background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: 0.3s;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.08),
+        0 25px 60px rgba(217,4,41,0.12);
+    transition: 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
 }
 
-.card h3 {
-    color: #b30000;
-    margin-bottom: 10px;
+.card h2 {
+    margin-bottom: 25px;
+    color: #d90429;
+    text-align: center;
 }
 
-/* Tables */
+/* =====================
+   FORM ELEMENTS
+===================== */
+
+.card label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+}
+
+.card input,
+.card select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.card input:focus,
+.card select:focus {
+    border-color: #d90429;
+    box-shadow: 0 0 0 3px rgba(217,4,41,0.15);
+    outline: none;
+}
+
+/* =====================
+   BUTTONS
+===================== */
+
+button {
+    padding: 10px 18px;
+    background: linear-gradient(90deg, #d90429, #9d0208);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(217,4,41,0.25);
+}
+
+/* =====================
+   HOME PAGE CARDS ONLY
+===================== */
+
+.main > .card {
+    max-width: 100%;
+    margin: 0 0 30px 0;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.main > .card h2 {
+    margin-bottom: 15px;
+    color: #9d0208;
+    text-align: left;
+}
+
+.main > .card p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* =====================
+   HISTORY TABLE
+===================== */
 
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-th, td {
-    padding: 12px 15px;
-    text-align: left;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 th {
-    background: #b30000;
+    background: #d90429;
     color: white;
+    padding: 15px;
+    text-align: left;
 }
 
-tr:nth-child(even) {
-    background: #f2f2f2;
+td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
 }
 
 tr:hover {
-    background: #f9e6e6;
+    background: #fff5f5;
+}
+/* =====================
+   CHECK STATUS RESULT BOX
+===================== */
+
+.status-message {
+    padding: 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
 }
 
-/* Forms */
-
-.form-box {
-    background: white;
-    padding: 40px;
-    max-width: 400px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+/* Eligible (Green) */
+.eligible {
+    background: #e6f4ea;
+    color: #2b9348;
+    border: 2px solid #2b9348;
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 6px;
-}
-
-input, select {
-    width: 100%;
-    padding: 8px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-
-/* Buttons */
-
-button {
-    background: #b30000;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #8f0000;
+/* Not Eligible (Red) */
+.not-eligible {
+    background: #fdeaea;
+    color: #d90429;
+    border: 2px solid #d90429;
 }
