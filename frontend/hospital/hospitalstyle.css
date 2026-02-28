@@ -54,15 +54,15 @@ body {
 
 
 .main h1 {
-  margin-bottom: 35px;
-  font-size: 32px;
-  color: #2f2f2f;
+  margin-bottom: 45px;
+  width: 100%;
+  color: #8b0000;
 }
 
 /* ========== DASHBOARD GRAPH ========== */
 .graph-section h2 {
   margin-bottom: 20px;
-  font-size: 22px;
+  color: #8b0000;
 }
 
 .graph-card {

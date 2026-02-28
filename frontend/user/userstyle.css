@@ -65,6 +65,12 @@ body {
     color: #d90429;
 }
 
+.main h2 {
+    width: 100%;
+    margin-bottom: 45px;
+    color: #8b0000;
+}
+
 /* =====================
    FORM CARD (Request + Edit Profile)
 ===================== */
