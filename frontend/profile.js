@@ -10,19 +10,18 @@
 
   const u = await r.json();
 
-  // fill profile page if elements exist
   const map = {
-    pUsername: u.Username,
-    pName: u.Name,
-    pBlood: u.Blood_Type,
-    pEmail: u.Gmail,
-    pMobile: u.Mobile_No,
+    pUsername: u.username,
+    pName: u.name,
+    pBlood: u.blood_type,
+    pEmail: u.gmail,
+    pMobile: u.mobile_no,
     pDistrict: u.district_name,
     pCity: u.city_name
   };
 
   for (const id in map) {
     const el = document.getElementById(id);
-    if (el) el.textContent = map[id] || "";
+    if (el) el.textContent = map[id] ?? "";
   }
 })();

@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>Admin</h2>
+      <a href="admin-dashboard.html">Home</a>
+      <a href="register-hospital.html">Register Hospital</a>
+      <a href="register-admin.html">Register Admin</a>
+      <a href="view-users.html">View Users</a>
+    </div>
+
+    <div class="main">
+      <h1>ADMIN DASHBOARD</h1>
+
+      <!-- ================= OVERVIEW GRAPH ================= -->
+      <div class="graph-section">
+        <h2>System Overview</h2>
+        <div class="graph-card">
+          <canvas id="statsChart"></canvas>
+        </div>
+      </div>
+
+      <!-- ================= STACKED GRAPH ================= -->
+      <div class="graph-section">
+        <h2>Hospital-wise Donor Distribution</h2>
+        <div class="graph-card">
+          <canvas id="hospitalChart"></canvas>
+        </div>
+      </div>
+
+      <!-- ================= CARDS SECTION ================= -->
+      <div class="cards">
+        <div class="card highlight">
+          <h3>Register Hospital</h3>
+          <p>Add new hospital details.</p>
+        </div>
+
+        <div class="card">
+          <h3>Register New Admin</h3>
+          <p>Add a new admin to the system.</p>
+        </div>
+
+        <div class="card">
+          <h3>View Users</h3>
+          <p>See all registered users.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /* ================= OVERVIEW BAR CHART ================= */
+
+      const ctx = document.getElementById("statsChart").getContext("2d");
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Clients", "Hospitals", "Admins"],
+          datasets: [
+            {
+              label: "Total Count",
+              data: [120, 15, 5],
+              backgroundColor: ["#8b0000", "#a80000", "#d32f2f"],
+              borderRadius: 12,
+              barThickness: 45,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+          },
+          scales: {
+            x: { grid: { display: false } },
+            y: {
+              beginAtZero: true,
+              grid: { color: "#eee" },
+            },
+          },
+        },
+      });
+
+      /* ================= STACKED BAR CHART ================= */
+
+      const hospitalCtx = document
+        .getElementById("hospitalChart")
+        .getContext("2d");
+
+      new Chart(hospitalCtx, {
+        type: "bar",
+        data: {
+          labels: ["Hospital A", "Hospital B", "Hospital C"],
+          datasets: [
+            {
+              label: "Male Donors",
+              data: [40, 30, 25],
+              backgroundColor: "#8b0000",
+            },
+            {
+              label: "Female Donors",
+              data: [35, 20, 30],
+              backgroundColor: "#d32f2f",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: "top" },
+          },
+          scales: {
+            x: {
+              stacked: true,
+              grid: { display: false },
+            },
+            y: {
+              stacked: true,
+              beginAtZero: true,
+              grid: { color: "#eee" },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
