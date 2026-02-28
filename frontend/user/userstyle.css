@@ -19,41 +19,45 @@ body {
    SIDEBAR
 ===================== */
 
-.sidebar {
-    width: 230px;
-    background: linear-gradient(180deg, #d90429, #9d0208);
-    color: white;
-    padding: 30px 20px;
-    position: fixed;
-    height: 100vh;
-}
-
 .sidebar h1 {
     margin-bottom: 40px;
+    font-size: 32px;
+    margin-bottom: 60px;
+    font-weight: 700;
+}
+
+/* ========== FINAL SIDEBAR ========== */
+
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background: #c40000;
+  color: white;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
 }
 
 .sidebar a {
-    display: block;
-    text-decoration: none;
-    color: white;
-    padding: 12px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    transition: 0.3s;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 25px 0;
+  transition: 0.2s ease;
 }
 
 .sidebar a:hover {
-    background: rgba(255,255,255,0.2);
+  padding-left: 8px;
+  opacity: 0.75;
 }
 
-/* =====================
-   MAIN AREA
-===================== */
-
+/* Main content shift */
 .main {
-    margin-left: 230px;
-    padding: 60px;
-    width: 100%;
+  margin-left: 240px;
+  padding: 50px;
+  width: 100%;
 }
 
 .main h1 {

@@ -1,8 +1,9 @@
+
 (async () => {
   const t = localStorage.getItem("token");
 
   if (!t) {
-    location.href = "login.html";
+    location.href = "../login.html";
     return;
   }
 
@@ -13,20 +14,18 @@
 
     if (!r.ok) {
       localStorage.removeItem("token");
-      location.href = "login.html";
+      location.href = "../login.html";
       return;
     }
 
     const u = await r.json();
 
-    // store user globally
     window.currentUser = u;
 
-    // fill username if element exists
     const el = document.getElementById("loggedUser");
     if (el) el.textContent = u.username;
 
   } catch {
-    location.href = "login.html";
+    location.href = "../login.html";
   }
 })();
