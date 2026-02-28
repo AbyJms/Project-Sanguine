@@ -1,0 +1,176 @@
+/* ========== RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+/* ========== SIDEBAR ========== */
+
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background: #c40000;
+  color: white;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+}
+
+.sidebar h2 {
+  font-size: 32px;
+  margin-bottom: 60px;
+  font-weight: 700;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 25px 0;
+  transition: 0.2s ease;
+}
+
+.sidebar a:hover {
+  padding-left: 8px;
+  opacity: 0.75;
+}
+
+/* Main content shift */
+.main {
+  margin-left: 240px;
+  padding: 50px;
+  width: 100%;
+}
+
+
+.main h1 {
+  margin-bottom: 35px;
+  font-size: 32px;
+  color: #2f2f2f;
+}
+
+/* ========== DASHBOARD GRAPH ========== */
+.graph-section h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.graph-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  height: 320px;
+  margin-bottom: 40px;
+}
+
+/* ========== DASHBOARD CARDS ========== */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card h3 {
+  color: #b30000;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* ========== TABLES ========== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+th {
+  background: #b30000;
+  color: white;
+  padding: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+tr:nth-child(even) {
+  background: #fafafa;
+}
+
+tr:hover {
+  background: #fceaea;
+}
+
+/* ========== FORM BOX (Request Page) ========== */
+.form-box {
+  background: white;
+  padding: 40px;
+  width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* ========== BUTTONS ========== */
+button {
+  background: #b30000;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+button:hover {
+  background: #8f0000;
+  transform: translateY(-1px);
+}

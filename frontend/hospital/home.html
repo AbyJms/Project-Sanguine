@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>Hospital Dashboard</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <!-- <link rel="stylesheet" href="../css/style.css" /> -->
+    <link rel="stylesheet" href="hospitalstyle.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
@@ -19,10 +20,10 @@
       <h1>HOSPITAL</h1>
 
       <div class="graph-section">
-         <h2>Blood Requests Overview</h2>
-         <div class="graph-card">
-           <canvas id="requestChart"></canvas>
-         </div>
+        <h2>Blood Requests Overview</h2>
+        <div class="graph-card">
+          <canvas id="requestChart"></canvas>
+        </div>
       </div>
 
       <div class="card-container">
@@ -48,39 +49,41 @@
       </div>
     </div>
     <script>
-  const ctx = document.getElementById('requestChart').getContext('2d');
+      const ctx = document.getElementById("requestChart").getContext("2d");
 
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-      datasets: [{
-        label: 'Blood Requests',
-        data: [12, 19, 8, 15, 22, 18],
-        borderColor: '#8b0000',
-        backgroundColor: 'rgba(139, 0, 0, 0.1)',
-        borderWidth: 3,
-        tension: 0.4,
-        fill: true,
-        pointBackgroundColor: '#8b0000',
-        pointRadius: 5
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: true
-        }
-      },
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-   </script>
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+          datasets: [
+            {
+              label: "Blood Requests",
+              data: [12, 19, 8, 15, 22, 18],
+              borderColor: "#8b0000",
+              backgroundColor: "rgba(139, 0, 0, 0.1)",
+              borderWidth: 3,
+              tension: 0.4,
+              fill: true,
+              pointBackgroundColor: "#8b0000",
+              pointRadius: 5,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
   </body>
 </html>
