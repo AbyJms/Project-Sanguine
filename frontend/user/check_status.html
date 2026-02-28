@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sanguine - Check Eligibility</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h1>Sanguine</h1>
+    <a href="home.html">Home</a>
+    <a href="profile.html">Profile</a>
+    <a href="history.html">History</a>
+    <a href="notifications.html">Notifications</a>
+</div>
+
+<div class="main">
+    <div class="card">
+        <h2>Check Donation Eligibility</h2>
+
+        <label for="lastDonation">Last Donation Date:</label>
+        <input type="date" id="lastDonation">
+
+        <button onclick="checkEligibility()">Check Status</button>
+
+        <!-- Result will appear here -->
+        <div id="result"></div>
+    </div>
+</div>
+
+<script>
+function checkEligibility() {
+    const lastDonation = document.getElementById("lastDonation").value;
+    const resultDiv = document.getElementById("result");
+
+    if (!lastDonation) {
+        resultDiv.innerHTML = "<p class='status-message not-eligible'>Please select a date.</p>";
+        return;
+    }
+
+    const lastDate = new Date(lastDonation);
+    const today = new Date();
+
+    const diffTime = today - lastDate;
+    const diffDays = diffTime / (1000 * 60 * 60 * 24);
+
+    if (diffDays >= 90) {
+        resultDiv.innerHTML =
+            "<p class='status-message eligible'>You are eligible to donate blood.</p>";
+    } else {
+        const remaining = Math.ceil(90 - diffDays);
+        resultDiv.innerHTML =
+            "<p class='status-message not-eligible'>You are not eligible yet. Please wait " 
+            + remaining + " more days.</p>";
+    }
+}
+</script>
+
+</body>
+</html>

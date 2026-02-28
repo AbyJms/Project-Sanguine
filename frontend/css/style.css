@@ -143,3 +143,164 @@ table {
     border-radius: 10px;
     overflow: hidden;
 }
+
+/*
+
+
+
+
+*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f9;
+}
+
+/* Sidebar */
+
+.sidebar {
+    width: 230px;
+    background: #b30000;
+    color: white;
+    padding: 30px 20px;
+    position: fixed;
+    height: 100%;
+}
+
+.sidebar h2 {
+    margin-bottom: 40px;
+    font-size: 26px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 18px 0;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    padding-left: 8px;
+    opacity: 0.8;
+}
+
+/* Main Content */
+
+.main {
+    margin-left: 230px;
+    padding: 40px;
+    width: 100%;
+}
+
+.main h1 {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Cards (Dashboard) */
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: #b30000;
+    margin-bottom: 10px;
+}
+
+/* Tables */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background: #b30000;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+tr:hover {
+    background: #f9e6e6;
+}
+
+/* Forms */
+
+.form-box {
+    background: white;
+    padding: 40px;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* Buttons */
+
+button {
+    background: #b30000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #8f0000;
+}
+
