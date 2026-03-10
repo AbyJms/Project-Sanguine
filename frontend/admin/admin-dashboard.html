@@ -14,40 +14,41 @@
     <a href="register-hospital.html">Register Hospital</a>
     <a href="register-admin.html">Register Admin</a>
     <a href="view-users.html">View Users</a>
+    <a href="#" onclick="logout(); return false;" style="margin-top: auto;">Logout</a>
   </div>
 
   <div class="main">
     <h1>ADMIN DASHBOARD</h1>
 
-    <!-- ================= OVERVIEW GRAPH ================= -->
-    <div class="graph-section">
+    <!-- ================= STACKED GRAPH (FULL WIDTH TOP) ================= -->
+    <div class="graph-section" style="width: 100%;">
+      <h2>District-wise Donor Distribution</h2>
+      <div class="graph-card" style="height: 450px;">
+        <canvas id="hospitalChart"></canvas>
+      </div>
+    </div>
+
+    <!-- ================= OVERVIEW GRAPH (BELOW) ================= -->
+    <div class="graph-section" style="width: 50%;">
       <h2>System Overview</h2>
       <div class="graph-card">
         <canvas id="statsChart"></canvas>
       </div>
     </div>
 
-    <!-- ================= STACKED GRAPH ================= -->
-    <div class="graph-section">
-      <h2>Hospital-wise Donor Distribution</h2>
-      <div class="graph-card">
-        <canvas id="hospitalChart"></canvas>
-      </div>
-    </div>
-
     <!-- ================= CARDS SECTION ================= -->
     <div class="cards">
-      <div class="card highlight">
+      <div class="card highlight" onclick="location.href='register-hospital.html'" style="cursor: pointer;">
         <h3>Register Hospital</h3>
         <p>Add new hospital details.</p>
       </div>
 
-      <div class="card">
+      <div class="card" onclick="location.href='register-admin.html'" style="cursor: pointer;">
         <h3>Register New Admin</h3>
         <p>Add a new admin to the system.</p>
       </div>
 
-      <div class="card">
+      <div class="card" onclick="location.href='view-users.html'" style="cursor: pointer;">
         <h3>View Users</h3>
         <p>See all registered users.</p>
       </div>
@@ -55,83 +56,103 @@
   </div>
 
   <script>
-    /* ================= OVERVIEW BAR CHART ================= */
+    async function loadStats() {
+      const t = localStorage.getItem("token");
+      try {
+        const [statsRes, distRes] = await Promise.all([
+          fetch("http://localhost:5000/api/admin/stats", {
+            headers: { Authorization: "Bearer " + t }
+          }),
+          fetch("http://localhost:5000/api/admin/donor-distribution", {
+            headers: { Authorization: "Bearer " + t }
+          })
+        ]);
 
-    const ctx = document.getElementById("statsChart").getContext("2d");
+        if (!statsRes.ok || !distRes.ok) return;
 
-    new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: ["Clients", "Hospitals", "Admins"],
-        datasets: [
-          {
-            label: "Total Count",
-            data: [120, 15, 5],
-            backgroundColor: ["#8b0000", "#a80000", "#d32f2f"],
-            borderRadius: 12,
-            barThickness: 45,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-        },
-        scales: {
-          x: { grid: { display: false } },
-          y: {
-            beginAtZero: true,
-            grid: { color: "#eee" },
-          },
-        },
-      },
-    });
+        const stats = await statsRes.json();
+        const distData = await distRes.json();
 
-    /* ================= STACKED BAR CHART ================= */
+        /* ================= OVERVIEW BAR CHART ================= */
+        const ctx1 = document.getElementById("statsChart").getContext("2d");
+        new Chart(ctx1, {
+          type: "bar",
+          data: {
+            labels: ["Clients", "Hospitals", "Admins"],
+            datasets: [
+              {
+                label: "Total Count",
+                data: [stats.clients, stats.hospitals, stats.admins],
+                backgroundColor: ["#8b0000", "#a80000", "#d32f2f"],
+                borderRadius: 12,
+                barThickness: 45,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { grid: { display: false } },
+              y: { 
+                beginAtZero: true, 
+                grid: { color: "#eee" },
+                ticks: { precision: 0 }
+              },
+            },
+          },
+        });
 
-    const hospitalCtx = document
-      .getElementById("hospitalChart")
-      .getContext("2d");
+        /* ================= DISTRICT DONOR BAR CHART ================= */
+        const ctx2 = document.getElementById("hospitalChart").getContext("2d");
+        new Chart(ctx2, {
+          type: "bar",
+          data: {
+            labels: distData.map(d => d.district_name),
+            datasets: [{
+              label: "Donors",
+              data: distData.map(d => parseInt(d.donor_count)),
+              backgroundColor: "#8b0000",
+              borderRadius: 8,
+              barPercentage: 0.8,
+              categoryPercentage: 0.9
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { 
+               legend: { display: false },
+               tooltip: { enabled: true }
+            },
+            scales: {
+              x: { 
+                grid: { display: false },
+                ticks: { 
+                    font: { size: 9, weight: 'bold' },
+                    maxRotation: 0,
+                    minRotation: 0,
+                    autoSkip: false
+                }
+              },
+              y: { 
+                beginAtZero: true, 
+                grid: { color: "#eee" },
+                ticks: { stepSize: 1, precision: 0 }
+              },
+            },
+          },
+        });
 
-    new Chart(hospitalCtx, {
-      type: "bar",
-      data: {
-        labels: ["Hospital A", "Hospital B", "Hospital C"],
-        datasets: [
-          {
-            label: "Male Donors",
-            data: [40, 30, 25],
-            backgroundColor: "#8b0000",
-          },
-          {
-            label: "Female Donors",
-            data: [35, 20, 30],
-            backgroundColor: "#d32f2f",
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { position: "top" },
-        },
-        scales: {
-          x: {
-            stacked: true,
-            grid: { display: false },
-          },
-          y: {
-            stacked: true,
-            beginAtZero: true,
-            grid: { color: "#eee" },
-          },
-        },
-      },
-    });
+      } catch (err) {
+        console.error("DASHBOARD ERROR:", err);
+      }
+    }
+
+    loadStats();
   </script>
+  <script src="../auth.js"></script>
+  <script src="../logout.js"></script>
 </body>
-
-</html>
+</html>
