@@ -1,51 +1,54 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Request Blood</title>
-    <link rel="stylesheet" href="../css/style.css">
+  <title>Request Blood</title>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
 
-<div class="sidebar">
+  <div class="sidebar">
     <h1>Sanguine</h1>
     <a href="home.html">Home</a>
     <a href="profile.html">Profile</a>
     <a href="history.html">History</a>
     <a href="notifications.html">Notifications</a>
     <a href="#" onclick="logout(); return false;" style="margin-top: auto;">Logout</a>
-</div>
+  </div>
 
-<div class="main">
+  <div class="main">
     <div class="card">
-        <h2>Request Blood</h2>
+      <h2>Request Blood</h2>
 
-        <p><strong>Your Blood Type:</strong> <span id="uBlood">-</span></p>
+      <p><strong>Your Blood Type:</strong> <span id="uBlood">-</span></p>
 
-        <div class="form-group">
-            <label>Select District</label>
-            <select id="rDistrict">
-                <option value="">Select District</option>
-            </select>
-        </div>
+      <div class="form-group">
+        <label>Select District</label>
+        <select id="rDistrict">
+          <option value="">Select District</option>
+        </select>
+      </div>
 
-        <div class="form-group">
-            <label>Select City</label>
-            <select id="rCity">
-                <option value="">Select City</option>
-            </select>
-        </div>
+      <div class="form-group">
+        <label>Select City</label>
+        <select id="rCity">
+          <option value="">Select City</option>
+        </select>
+      </div>
 
-        <div class="form-group">
-            <label>Quantity (units)</label>
-            <input type="number" id="rQuantity" value="1" min="1">
-        </div>
+      <div class="form-group">
+        <label>Quantity (units)</label>
+        <input type="number" id="rQuantity" value="1" min="1">
+      </div>
 
-        <button onclick="submitRequest()">Submit Request</button>
+      <button onclick="submitRequest()">Submit Request</button>
     </div>
-</div>
+  </div>
 
-<script src="../auth.js"></script>
-<script src="../logout.js"></script>
-<script src="request.js"></script>
+  <script src="../auth.js"></script>
+  <script src="../logout.js"></script>
+  <script src="request.js"></script>
 </body>
-</html>
+
+</html>

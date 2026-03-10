@@ -1,73 +1,76 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Edit Profile</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
 
-<div class="main">
-    <div class="card">
-        <h2>Edit Profile</h2>
+    <div class="main">
+        <div class="card">
+            <h2>Edit Profile</h2>
 
-        <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" id="eName" required>
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="eName" required>
+            </div>
+
+            <div class="form-group">
+                <label>Mobile No</label>
+                <input type="text" id="eMobile" maxlength="10" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="eEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label>Blood Type</label>
+                <select id="eBlood">
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>District</label>
+                <select id="eDistrict">
+                    <option value="">Select District</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>City</label>
+                <select id="eCity">
+                    <option value="">Select City</option>
+                </select>
+            </div>
+
+            <button onclick="saveChanges()">Save Changes</button>
         </div>
-
-        <div class="form-group">
-            <label>Mobile No</label>
-            <input type="text" id="eMobile" maxlength="10" required>
-        </div>
-
-        <div class="form-group">
-            <label>Email</label>
-            <input type="email" id="eEmail" required>
-        </div>
-
-        <div class="form-group">
-            <label>Blood Type</label>
-            <select id="eBlood">
-                <option value="A+">A+</option>
-                <option value="A-">A-</option>
-                <option value="B+">B+</option>
-                <option value="B-">B-</option>
-                <option value="O+">O+</option>
-                <option value="O-">O-</option>
-                <option value="AB+">AB+</option>
-                <option value="AB-">AB-</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>District</label>
-            <select id="eDistrict">
-                <option value="">Select District</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>City</label>
-            <select id="eCity">
-                <option value="">Select City</option>
-            </select>
-        </div>
-
-        <button onclick="saveChanges()">Save Changes</button>
     </div>
-</div>
 
-<div class="sidebar">
-    <h1>Sanguine</h1>
-    <a href="home.html">Home</a>
-    <a href="profile.html">Profile</a>
-    <a href="history.html">History</a>
-    <a href="notifications.html">Notifications</a>
-    <a href="#" onclick="logout(); return false;" style="margin-top: auto;">Logout</a>
-</div>
+    <div class="sidebar">
+        <h1>Sanguine</h1>
+        <a href="home.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="history.html">History</a>
+        <a href="notifications.html">Notifications</a>
+        <a href="#" onclick="logout(); return false;" style="margin-top: auto;">Logout</a>
+    </div>
 
-<script src="../auth.js"></script>
-<script src="../logout.js"></script>
-<script src="edit-profile.js"></script>
+    <script src="../auth.js"></script>
+    <script src="../logout.js"></script>
+    <script src="edit-profile.js"></script>
 </body>
-</html>
+
+</html>

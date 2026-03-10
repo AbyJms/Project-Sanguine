@@ -57,10 +57,10 @@
         const res = await fetch("http://localhost:5000/api/hospital/request-stats", {
           headers: { Authorization: "Bearer " + token }
         });
-        
+
         if (!res.ok) {
-           console.error("API error:", res.status);
-           return;
+          console.error("API error:", res.status);
+          return;
         }
         const data = await res.json();
         console.log("Stats Data:", data);
@@ -89,8 +89,8 @@
               fill: true,
             }]
           },
-          options: { 
-            responsive: true, 
+          options: {
+            responsive: true,
             maintainAspectRatio: false,
             scales: {
               y: {

@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>History</title>
-    <link rel="stylesheet" href="../css/style.css">
+  <title>History</title>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
 
-<div class="sidebar">
+  <div class="sidebar">
     <h1>Sanguine</h1>
     <a href="home.html">Home</a>
     <a href="profile.html">Profile</a>
     <a href="history.html">History</a>
     <a href="notifications.html">Notifications</a>
     <a href="#" onclick="logout(); return false;" style="margin-top: auto;">Logout</a>
-</div>
+  </div>
 
-<div class="main">
+  <div class="main">
     <h2>Request History</h2>
 
     <table>
-        <thead>
-            <tr>
-                <th>Acceptor Name</th>
-                <th>Mobile</th>
-                <th>Blood</th>
-                <th>District</th>
-                <th>City</th>
-                <th>Quantity</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody id="historyBody">
-            <!-- Dynamic data -->
-        </tbody>
+      <thead>
+        <tr>
+          <th>Acceptor Name</th>
+          <th>Mobile</th>
+          <th>Blood</th>
+          <th>District</th>
+          <th>City</th>
+          <th>Quantity</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="historyBody">
+        <!-- Dynamic data -->
+      </tbody>
     </table>
-</div>
+  </div>
 
-<script src="../auth.js"></script>
-<script src="../logout.js"></script>
-<script src="history.js"></script>
+  <script src="../auth.js"></script>
+  <script src="../logout.js"></script>
+  <script src="history.js"></script>
 </body>
-</html>
+
+</html>

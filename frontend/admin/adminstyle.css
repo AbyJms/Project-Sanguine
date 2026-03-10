@@ -1,0 +1,236 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background: #f5f5f5;
+}
+
+
+/* ===== Final Sidebar ===== */
+.sidebar {
+width: 200px;
+height: 100vh;
+background: #c40000;
+color: white;
+position: fixed;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding-top: 60px;
+}
+
+.sidebar h2 {
+font-size: 32px;
+margin-bottom: 60px;
+font-weight: 700;
+}
+
+.sidebar a {
+color: white;
+text-decoration: none;
+font-size: 20px;
+margin: 25px 0;
+transition: 0.2s ease;
+}
+
+.sidebar a:hover {
+padding-left: 8px;
+opacity: 0.75;
+}
+
+
+/* ===== MAIN ===== */
+.main {
+    margin-left: 220px;
+    width: 100%;
+    padding: 60px 60px;
+
+    /* NEW: allow graph sections to sit side by side */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main h1 {
+    width: 100%;
+    margin-bottom: 45px;
+    color: #8b0000;
+}
+
+/* ================================================= */
+/* ================= DASHBOARD ===================== */
+/* ================================================= */
+
+/* ===== GRAPH SECTIONS SIDE BY SIDE ===== */
+
+.graph-section {
+    width: 50%;
+    padding-right: 20px;
+    margin-bottom: 40px;
+}
+
+.graph-section h2 {
+    margin-bottom: 20px;
+    color: #8b0000;
+}
+
+.graph-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.08),
+        0 25px 60px rgba(139, 0, 0, 0.18);
+
+    height: 320px;   /* reduced graph container height */
+}
+
+/* Reduce graph height only */
+.graph-card canvas {
+    height: 250px !important;
+}
+
+/* ===== CARDS SECTION (UNCHANGED SIZE) ===== */
+
+.cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+/* Wider dashboard cards */
+.cards .card {
+    background: white;
+    padding: 65px;
+    border-radius: 20px;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.08),
+        0 25px 60px rgba(139, 0, 0, 0.18);
+    transition: 0.3s ease;
+}
+
+/* Hover */
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 14px 30px rgba(0,0,0,0.12),
+        0 30px 70px rgba(139, 0, 0, 0.25);
+}
+
+.card h3 {
+    color: #8b0000;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.card p {
+    color: #555;
+    font-size: 15px;
+}
+
+/* ================================================= */
+/* ================= FORMS ========================= */
+/* ================================================= */
+
+.form-container {
+    width: 80%;
+    margin: 0 auto;
+    background: white;
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.08),
+        0 25px 60px rgba(139, 0, 0, 0.18);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 40px;
+}
+
+.form-container label {
+    font-size: 13px;
+    color: #444;
+    display: block;
+}
+
+.form-container input,
+.form-container select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.form-container.small {
+    width: 60%;
+    grid-template-columns: 1fr;
+}
+
+.form-container button {
+    grid-column: span 2;
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+    background: #8b0000;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.form-container.small button {
+    grid-column: span 1;
+}
+
+.form-container button:hover {
+    background: #a80000;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(139, 0, 0, 0.3);
+}
+
+/* ================================================= */
+/* ================= TABLE ========================= */
+/* ================================================= */
+
+.table-container {
+    width: 95%;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.08),
+        0 25px 60px rgba(139, 0, 0, 0.18);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #8b0000;
+    color: white;
+    padding: 14px;
+    text-align: left;
+}
+
+td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+tr:hover {
+    background: #fafafa;
+}
