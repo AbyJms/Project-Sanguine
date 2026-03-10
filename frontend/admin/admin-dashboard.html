@@ -28,30 +28,40 @@
       </div>
     </div>
 
-    <!-- ================= OVERVIEW GRAPH (BELOW) ================= -->
-    <div class="graph-section" style="width: 50%;">
-      <h2>System Overview</h2>
-      <div class="graph-card">
-        <canvas id="statsChart"></canvas>
-      </div>
-    </div>
-
-    <!-- ================= CARDS SECTION ================= -->
-    <div class="cards">
-      <div class="card highlight" onclick="location.href='register-hospital.html'" style="cursor: pointer;">
-        <h3>Register Hospital</h3>
-        <p>Add new hospital details.</p>
+    <!-- ================= BOTTOM SECTION: OVERVIEW + CARDS ================= -->
+    <div style="display: flex; gap: 30px; align-items: flex-start;">
+      
+      <!-- System Overview (Left) -->
+      <div class="graph-section" style="width: 65%; flex-shrink: 0;">
+        <h2>System Overview</h2>
+        <div class="graph-card" style="height: 350px;">
+          <canvas id="statsChart"></canvas>
+        </div>
       </div>
 
-      <div class="card" onclick="location.href='register-admin.html'" style="cursor: pointer;">
-        <h3>Register New Admin</h3>
-        <p>Add a new admin to the system.</p>
+      <!-- Quick Actions (Right) -->
+      <div style="width: 35%; flex-grow: 1;">
+        <h2 style="margin-bottom: 20px; color: #8b0000;">Quick Actions</h2>
+        <div class="dashboard-action-cards" style="display: flex; flex-direction: column; gap: 20px;">
+          
+          <div class="card compact" onclick="location.href='register-hospital.html'" style="cursor: pointer; padding: 25px; border-radius: 15px;">
+            <h3>Register Hospital</h3>
+            <p>Add new hospital details.</p>
+          </div>
+
+          <div class="card compact" onclick="location.href='register-admin.html'" style="cursor: pointer; padding: 25px; border-radius: 15px;">
+            <h3>Register New Admin</h3>
+            <p>Add a new admin to the system.</p>
+          </div>
+
+          <div class="card compact" onclick="location.href='view-users.html'" style="cursor: pointer; padding: 25px; border-radius: 15px;">
+            <h3>View Users</h3>
+            <p>See all registered users.</p>
+          </div>
+
+        </div>
       </div>
 
-      <div class="card" onclick="location.href='view-users.html'" style="cursor: pointer;">
-        <h3>View Users</h3>
-        <p>See all registered users.</p>
-      </div>
     </div>
   </div>
 
