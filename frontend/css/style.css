@@ -388,9 +388,9 @@ body {
     height: 320px;   /* reduced graph container height */
 }
 
-/* Reduce graph height only */
+/* Allow graph to fill container */
 .graph-card canvas {
-    height: 250px !important;
+    height: 100% !important;
 }
 
 /* ===== CARDS SECTION (UNCHANGED SIZE) ===== */

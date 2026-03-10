@@ -1,47 +1,47 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Update Status</title>
-    <link rel="stylesheet" href="../css/style.css" />
-  </head>
-  <body>
-    <div class="sidebar">
-      <h2>Sanguine</h2>
-      <a href="home.html">Home</a>
-      <a href="donor-list.html">Donor List</a>
-      <a href="upload-result.html">Upload Result</a>
-      <a href="update-status.html">Update Status</a>
-      <a href="request.html">Request</a>
-    </div>
 
-    <div class="main">
-      <h1>Update Request Status</h1>
+<head>
+  <title>Update Status</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
 
-      <table>
+<body>
+  <div class="sidebar">
+    <h2>Sanguine</h2>
+    <a href="home.html">Home</a>
+    <a href="donor-list.html">Donor List</a>
+    <!-- <a href="upload-result.html">Upload Result</a> -->
+    <a href="update-status.html">Update Status</a>
+    <a href="request.html">Request</a>
+    <a href="#" onclick="logout(); return false;" style="margin-top: auto;">Logout</a>
+  </div>
+
+  <div class="main">
+    <h1>Update Request Status</h1>
+
+    <table>
+      <thead>
         <tr>
           <th>Request ID</th>
-          <th>Acceptor</th>
+          <th>Acceptor Name</th>
           <th>Blood</th>
           <th>Quantity</th>
+          <th>City</th>
           <th>Status</th>
+          <th>Action</th>
         </tr>
-        <tr>
-          <td>101</td>
-          <td>City Hospital</td>
-          <td>O+</td>
-          <td>2</td>
-          <td>
-            <select>
-              <option>Pending</option>
-              <option>Fulfilled</option>
-              <option>Cancelled</option>
-            </select>
-          </td>
-        </tr>
-      </table>
+      </thead>
+      <tbody id="requestTableBody">
+        <!-- Dynamic Content -->
+      </tbody>
+    </table>
+  </div>
 
-      <br />
-      <button>Update Status</button>
-    </div>
-  </body>
+  <script src="../auth.js"></script>
+  <script src="../logout.js"></script>
+  <script src="update-status.js"></script>
+</body>
+
+
 </html>

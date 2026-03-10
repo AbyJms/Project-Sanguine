@@ -12,47 +12,48 @@
 
         <div class="form-group">
             <label>Full Name</label>
-            <input type="text" value="Abhishek C">
+            <input type="text" id="eName" required>
         </div>
 
         <div class="form-group">
             <label>Mobile No</label>
-            <input type="text" value="8592997755">
+            <input type="text" id="eMobile" maxlength="10" required>
         </div>
 
         <div class="form-group">
             <label>Email</label>
-            <input type="email" value="bleh@gmail.com">
+            <input type="email" id="eEmail" required>
         </div>
 
         <div class="form-group">
             <label>Blood Type</label>
-            <select>
-                <option>O+</option>
-                <option>A+</option>
-                <option>B+</option>
-                <option>AB+</option>
+            <select id="eBlood">
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
             </select>
         </div>
 
         <div class="form-group">
             <label>District</label>
-            <select>
-                <option>Kottayam</option>
-                <option>Kollam</option>
-                <option>Alappuzha</option>
+            <select id="eDistrict">
+                <option value="">Select District</option>
             </select>
         </div>
 
         <div class="form-group">
             <label>City</label>
-            <select>
-                <option>Kottayam</option>
-                <option>Kayamkulam</option>
+            <select id="eCity">
+                <option value="">Select City</option>
             </select>
         </div>
 
-        <button>Save Changes</button>
+        <button onclick="saveChanges()">Save Changes</button>
     </div>
 </div>
 
@@ -62,12 +63,11 @@
     <a href="profile.html">Profile</a>
     <a href="history.html">History</a>
     <a href="notifications.html">Notifications</a>
-    <a href="#" onclick="logout()">Logout</a>
+    <a href="#" onclick="logout(); return false;" style="margin-top: auto;">Logout</a>
 </div>
 
-
-<script src="auth.js"></script>
-<script src="logout.js"></script>
-
+<script src="../auth.js"></script>
+<script src="../logout.js"></script>
+<script src="edit-profile.js"></script>
 </body>
-</html>
+</html>

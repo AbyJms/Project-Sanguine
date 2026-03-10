@@ -1,44 +1,54 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Request Blood</title>
-    <link rel="stylesheet" href="../css/style.css" />
-  </head>
-  <body>
-    <div class="sidebar">
-      <h2>Sanguine</h2>
-      <a href="home.html">Home</a>
-      <a href="donor-list.html">Donor List</a>
-      <a href="upload-result.html">Upload Result</a>
-      <a href="update-status.html">Update Status</a>
-      <a href="request.html">Request</a>
-    </div>
 
-    <div class="main">
-      <h1>Request Blood</h1>
+<head>
+  <title>Request Blood</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
 
-      <div class="form-box">
-        <div class="form-group">
-          <label>Select Blood Type</label>
-          <select>
-            <option>A+</option>
-            <option>A-</option>
-            <option>B+</option>
-            <option>B-</option>
-            <option>O+</option>
-            <option>O-</option>
-            <option>AB+</option>
-            <option>AB-</option>
-          </select>
-        </div>
+<body>
+  <div class="sidebar">
+    <h2>Sanguine</h2>
+    <a href="home.html">Home</a>
+    <a href="donor-list.html">Donor List</a>
+    <!-- <a href="upload-result.html">Upload Result</a> -->
+    <a href="update-status.html">Update Status</a>
+    <a href="request.html">Request</a>
+    <a href="#" onclick="logout(); return false;" style="margin-top: auto;">Logout</a>
+  </div>
 
-        <div class="form-group">
-          <label>Quantity (units)</label>
-          <input type="number" />
-        </div>
+  <div class="main">
+    <h1>Request Blood</h1>
 
-        <button>Submit Request</button>
+    <div class="form-box" style="max-width: 400px;">
+      <div class="form-group">
+        <label>Select Blood Type</label>
+        <select id="hBlood">
+          <option>A+</option>
+          <option>A-</option>
+          <option>B+</option>
+          <option>B-</option>
+          <option>O+</option>
+          <option>O-</option>
+          <option>AB+</option>
+          <option>AB-</option>
+        </select>
       </div>
+
+      <div class="form-group">
+        <label>Quantity (units)</label>
+        <input type="number" id="hQuantity" value="1" min="1" />
+      </div>
+
+      <button onclick="submitHospitalRequest()">Submit Request</button>
     </div>
-  </body>
+  </div>
+
+
+  <script src="../auth.js"></script>
+  <script src="../logout.js"></script>
+  <script src="request.js"></script>
+
+</body>
+
 </html>

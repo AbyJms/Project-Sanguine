@@ -24,7 +24,8 @@
 
     // fill username if element exists
     const el = document.getElementById("loggedUser");
-    if (el) el.textContent = u.username;
+    if (el) el.textContent = u.name || u.username;
+
 
   } catch {
     location.href = "login.html";

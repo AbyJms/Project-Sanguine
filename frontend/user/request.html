@@ -12,38 +12,40 @@
     <a href="profile.html">Profile</a>
     <a href="history.html">History</a>
     <a href="notifications.html">Notifications</a>
+    <a href="#" onclick="logout(); return false;" style="margin-top: auto;">Logout</a>
 </div>
 
 <div class="main">
     <div class="card">
         <h2>Request Blood</h2>
 
-        <p><strong>Your Blood Type:</strong> O+</p>
+        <p><strong>Your Blood Type:</strong> <span id="uBlood">-</span></p>
 
         <div class="form-group">
             <label>Select District</label>
-            <select>
-                <option>Alappuzha</option>
-                <option>Kollam</option>
+            <select id="rDistrict">
+                <option value="">Select District</option>
             </select>
         </div>
 
         <div class="form-group">
             <label>Select City</label>
-            <select>
-                <option>Kayamkulam</option>
-                <option>Kollam</option>
+            <select id="rCity">
+                <option value="">Select City</option>
             </select>
         </div>
 
         <div class="form-group">
             <label>Quantity (units)</label>
-            <input type="number" value="1">
+            <input type="number" id="rQuantity" value="1" min="1">
         </div>
 
-        <button>Submit Request</button>
+        <button onclick="submitRequest()">Submit Request</button>
     </div>
 </div>
 
+<script src="../auth.js"></script>
+<script src="../logout.js"></script>
+<script src="request.js"></script>
 </body>
-</html>
+</html>

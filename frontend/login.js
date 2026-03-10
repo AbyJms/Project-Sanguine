@@ -4,7 +4,7 @@ async function login() {
 
   const res = await fetch("http://localhost:5000/api/login", {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, password })
   });
 
@@ -18,7 +18,7 @@ async function login() {
   localStorage.setItem("token", data.token);
 
   // ✅ FIXED ROUTING
-  if (data.role === "Admin") location.href = "admin/home.html";
+  if (data.role === "Admin") location.href = "admin/admin-dashboard.html";
   else if (data.role === "Hospital") location.href = "hospital/home.html";
   else location.href = "user/home.html"; // Client default
 }

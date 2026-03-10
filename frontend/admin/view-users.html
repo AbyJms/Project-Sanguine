@@ -11,41 +11,107 @@
       <a href="register-hospital.html">Register Hospital</a>
       <a href="register-admin.html">Register Admin</a>
       <a href="#">View Users</a>
+      <a href="#" onclick="logout(); return false;" style="margin-top: auto;">Logout</a>
     </div>
+
 
     <div class="main">
       <h1>View Users</h1>
 
+      <div class="filter-buttons" style="margin: 20px 0;">
+        <button class="primary-btn" onclick="fetchUsers('Admin')">Admin</button>
+        <button class="primary-btn" onclick="fetchUsers('Hospital')">Hospital</button>
+        <button class="primary-btn" onclick="fetchUsers('Client')">Client</button>
+      </div>
+
       <div class="table-container">
-        <table>
-          <tr>
-            <th>Username</th>
-            <th>Name</th>
-            <th>Role</th>
-            <th>Contact No</th>
-            <th>Gmail</th>
-            <th>Blood Group</th>
-          </tr>
-
-          <tr>
-            <td>abc</td>
-            <td>Anonymous</td>
-            <td>Client</td>
-            <td>9988999999</td>
-            <td>abc@gmail.com</td>
-            <td>AB+</td>
-          </tr>
-
-          <tr>
-            <td>admin</td>
-            <td>admin</td>
-            <td>Admin</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
+        <table id="userTable">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Contact No</th>
+              <th>Gmail</th>
+              <th>Blood Group</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="userTableBody">
+            <!-- Dynamic content -->
+          </tbody>
         </table>
       </div>
     </div>
+
+    <script>
+      let currentRole = 'Client'; // Track current role for refresh
+
+      async function fetchUsers(role) {
+        currentRole = role;
+        const token = localStorage.getItem("token");
+        try {
+          const res = await fetch(`http://localhost:5000/api/admin/users/${role}`, {
+            headers: { Authorization: "Bearer " + token }
+          });
+          
+          if (!res.ok) {
+            const data = await res.json();
+            return alert(data.msg || "Error fetching users");
+          }
+
+          const users = await res.json();
+          const tbody = document.getElementById("userTableBody");
+          tbody.innerHTML = "";
+
+          users.forEach(u => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td>${u.username}</td>
+              <td>${u.name}</td>
+              <td>${u.role}</td>
+              <td>${u.mobile_no || '-'}</td>
+              <td>${u.gmail || '-'}</td>
+              <td>${u.blood_type || '-'}</td>
+              <td>
+                <button class="primary-btn" style="background: #8b0000; padding: 4px 8px; font-size: 12px;" onclick="deleteUser('${u.id}', '${u.username}')">Delete</button>
+              </td>
+            `;
+            tbody.appendChild(tr);
+          });
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+      async function deleteUser(id, username) {
+        if (!confirm(`Are you sure you want to delete user "${username}"?`)) return;
+
+        const token = localStorage.getItem("token");
+        try {
+          const res = await fetch(`http://localhost:5000/api/admin/users/${id}`, {
+            method: "DELETE",
+            headers: { Authorization: "Bearer " + token }
+          });
+
+          if (!res.ok) {
+            const data = await res.json();
+            return alert(data.msg || "Delete failed");
+          }
+
+          alert("User deleted!");
+          fetchUsers(currentRole); // Refresh
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+      // Default load
+      fetchUsers('Client');
+    </script>
+
+    <script src="../auth.js"></script>
+    <script src="../logout.js"></script>
   </body>
 </html>
+

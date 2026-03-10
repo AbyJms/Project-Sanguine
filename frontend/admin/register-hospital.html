@@ -1,49 +1,56 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Register Hospital</title>
-    <link rel="stylesheet" href="../css/style.css" />
-  </head>
-  <body>
-    <div class="sidebar">
-      <h2>Admin</h2>
-      <a href="admin-dashboard.html">Home</a>
-      <a href="#">Register Hospital</a>
-      <a href="register-admin.html">Register Admin</a>
-      <a href="view-users.html">View Users</a>
-    </div>
 
-    <div class="main">
-      <h1>Register Hospital</h1>
+<head>
+  <title>Register Hospital</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
 
-      <form class="form-container">
-        <label>Hospital Username:</label>
-        <input type="text" />
+<body>
+  <div class="sidebar">
+    <h2>Admin</h2>
+    <a href="admin-dashboard.html">Home</a>
+    <a href="#">Register Hospital</a>
+    <a href="register-admin.html">Register Admin</a>
+    <a href="view-users.html">View Users</a>
+    <a href="#" onclick="logout(); return false;" style="margin-top: auto;">Logout</a>
+  </div>
 
-        <label>Hospital Name:</label>
-        <input type="text" />
+  <div class="main">
+    <h1>Register Hospital</h1>
 
-        <label>Contact No:</label>
-        <input type="text" />
+    <form class="form-container" id="regForm" onsubmit="event.preventDefault(); registerHospital();">
+      <label>Hospital Username:</label>
+      <input type="text" id="username" required />
 
-        <label>District:</label>
-        <select>
-          <option>Alappuzha</option>
-        </select>
+      <label>Hospital Name:</label>
+      <input type="text" id="name" required />
 
-        <label>City:</label>
-        <select>
-          <option>Kayamkulam</option>
-        </select>
+      <label>Contact No:</label>
+      <input type="text" id="mobile_no" required />
 
-        <label>Email:</label>
-        <input type="email" />
+      <label>District:</label>
+      <select id="district" required>
+        <option value="">Select District</option>
+      </select>
 
-        <label>Password:</label>
-        <input type="password" />
+      <label>City:</label>
+      <select id="city" required>
+        <option value="">Select City</option>
+      </select>
 
-        <button type="submit">Register Hospital</button>
-      </form>
-    </div>
-  </body>
+      <label>Email:</label>
+      <input type="email" id="gmail" required />
+
+      <label>Password:</label>
+      <input type="password" id="password" required />
+
+      <button type="submit">Register Hospital</button>
+    </form>
+  </div>
+  <script src="admin-reg.js"></script>
+  <script src="../auth.js"></script>
+  <script src="../logout.js"></script>
+</body>
+
 </html>

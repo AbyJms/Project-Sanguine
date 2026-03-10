@@ -1,38 +1,45 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Donor List</title>
-    <link rel="stylesheet" href="../css/style.css" />
-  </head>
-  <body>
-    <div class="sidebar">
-      <h2>Sanguine</h2>
-      <a href="home.html">Home</a>
-      <a href="donor-list.html">Donor List</a>
-      <a href="upload-result.html">Upload Result</a>
-      <a href="update-status.html">Update Status</a>
-      <a href="request.html">Request</a>
-    </div>
 
-    <div class="main">
-      <h1>Donor List</h1>
+<head>
+  <title>Donor List</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
 
-      <table>
+<body>
+  <div class="sidebar">
+    <h2>Sanguine</h2>
+    <a href="home.html">Home</a>
+    <a href="donor-list.html">Donor List</a>
+    <!-- <a href="upload-result.html">Upload Result</a> -->
+    <a href="update-status.html">Update Status</a>
+    <a href="request.html">Request</a>
+    <a href="#" onclick="logout(); return false;" style="margin-top: auto;">Logout</a>
+  </div>
+
+  <div class="main">
+    <h1>Donor List</h1>
+
+    <table>
+      <thead>
         <tr>
           <th>Name</th>
           <th>Blood Group</th>
           <th>Contact</th>
           <th>Email</th>
-          <th>Username</th>
+          <th>City</th>
         </tr>
-        <tr>
-          <td>John Doe</td>
-          <td>A+</td>
-          <td>9876543210</td>
-          <td>john@mail.com</td>
-          <td>johnd</td>
-        </tr>
-      </table>
-    </div>
-  </body>
+      </thead>
+      <tbody id="donorTableBody">
+        <!-- Dynamic Content -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="../auth.js"></script>
+  <script src="../logout.js"></script>
+  <script src="donor-list.js"></script>
+</body>
+
+
 </html>

@@ -1,30 +1,40 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Register Admin</title>
-    <link rel="stylesheet" href="../css/style.css" />
-  </head>
-  <body>
-    <div class="sidebar">
-      <h2>Admin</h2>
-      <a href="admin-dashboard.html">Home</a>
-      <a href="register-hospital.html">Register Hospital</a>
-      <a href="#">Register Admin</a>
-      <a href="view-users.html">View Users</a>
-    </div>
 
-    <div class="main">
-      <h1>Register New Admin</h1>
+<head>
+  <title>Register Admin</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
 
-      <form class="form-container small">
-        <label>Username:</label>
-        <input type="text" />
+<body>
+  <div class="sidebar">
+    <h2>Admin</h2>
+    <a href="admin-dashboard.html">Home</a>
+    <a href="register-hospital.html">Register Hospital</a>
+    <a href="#">Register Admin</a>
+    <a href="view-users.html">View Users</a>
+    <a href="#" onclick="logout(); return false;" style="margin-top: auto;">Logout</a>
+  </div>
 
-        <label>Password:</label>
-        <input type="password" />
+  <div class="main">
+    <h1>Register New Admin</h1>
 
-        <button type="submit">Register Admin</button>
-      </form>
-    </div>
-  </body>
+    <form class="form-container small" onsubmit="event.preventDefault(); registerAdmin();">
+      <label>Full Name:</label>
+      <input type="text" id="name" required />
+
+      <label>Username:</label>
+      <input type="text" id="username" required />
+
+      <label>Password:</label>
+      <input type="password" id="password" required />
+
+      <button type="submit">Register Admin</button>
+    </form>
+  </div>
+  <script src="admin-reg.js"></script>
+  <script src="../auth.js"></script>
+  <script src="../logout.js"></script>
+</body>
+
 </html>
