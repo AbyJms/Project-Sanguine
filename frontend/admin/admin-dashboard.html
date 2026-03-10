@@ -70,10 +70,10 @@
       const t = localStorage.getItem("token");
       try {
         const [statsRes, distRes] = await Promise.all([
-          fetch("http://localhost:5000/api/admin/stats", {
+          fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/admin/stats", {
             headers: { Authorization: "Bearer " + t }
           }),
-          fetch("http://localhost:5000/api/admin/donor-distribution", {
+          fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/admin/donor-distribution", {
             headers: { Authorization: "Bearer " + t }
           })
         ]);

@@ -54,7 +54,7 @@
     async function loadRequests() {
       const token = localStorage.getItem("token");
       try {
-        const res = await fetch("http://localhost:5000/api/hospital/request-stats", {
+        const res = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/hospital/request-stats", {
           headers: { Authorization: "Bearer " + token }
         });
 

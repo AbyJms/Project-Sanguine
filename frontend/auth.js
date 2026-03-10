@@ -8,7 +8,7 @@
   }
 
   try {
-    const r = await fetch("http://localhost:5000/api/me", {
+    const r = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/me", {
       headers: { Authorization: "Bearer " + t }
     });
 

@@ -1,7 +1,7 @@
 let allCities = [];
 
 async function loadCities() {
-  const res = await fetch("http://localhost:5000/api/cities");
+  const res = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/cities");
   allCities = await res.json();
 
   const districtSelect = document.getElementById("district");
@@ -40,7 +40,7 @@ async function register() {
 
   if (!blood_type) return alert("Please select blood type");
 
-  const res = await fetch("http://localhost:5000/api/register", {
+  const res = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, username, password, gmail, mobile_no, city_id, blood_type })

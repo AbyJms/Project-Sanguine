@@ -6,7 +6,7 @@ async function loadRequestPage() {
 
     try {
         // 1. Load User Profile (to get blood type)
-        const profRes = await fetch("http://localhost:5000/api/profile", {
+        const profRes = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/profile", {
             headers: { Authorization: "Bearer " + token }
         });
         if (profRes.ok) {
@@ -15,7 +15,7 @@ async function loadRequestPage() {
         }
 
         // 2. Load Cities/Districts
-        const cityRes = await fetch("http://localhost:5000/api/cities");
+        const cityRes = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/cities");
         allCities = await cityRes.json();
 
         const dSel = document.getElementById("rDistrict");
@@ -55,7 +55,7 @@ async function submitRequest() {
     }
 
     try {
-        const res = await fetch("http://localhost:5000/api/request", {
+        const res = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/request", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

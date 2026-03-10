@@ -7,7 +7,7 @@ async function registerHospital() {
   const password = document.getElementById("password").value;
 
   const t = localStorage.getItem("token");
-  const res = await fetch("http://localhost:5000/api/register/hospital", {
+  const res = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/register/hospital", {
     method: "POST",
     headers: { 
       "Content-Type": "application/json",
@@ -31,7 +31,7 @@ async function registerAdmin() {
   const password = document.getElementById("password").value;
 
   const t = localStorage.getItem("token");
-  const res = await fetch("http://localhost:5000/api/register/admin", {
+  const res = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/register/admin", {
     method: "POST",
     headers: { 
       "Content-Type": "application/json",
@@ -52,7 +52,7 @@ async function registerAdmin() {
 // Logic for city dropdown if it exists on page
 if (document.getElementById("district")) {
   let allCities = [];
-  fetch("http://localhost:5000/api/cities")
+  fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/cities")
     .then(r => r.json())
     .then(data => {
       allCities = data;

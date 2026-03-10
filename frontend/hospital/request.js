@@ -8,7 +8,7 @@ async function submitHospitalRequest() {
     }
 
     try {
-        const res = await fetch("http://localhost:5000/api/hospital/request", {
+        const res = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/hospital/request", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -3,7 +3,7 @@ async function loadRequests() {
     if (!token) return;
 
     try {
-        const res = await fetch("http://localhost:5000/api/hospital/district-requests", {
+        const res = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/hospital/district-requests", {
             headers: { Authorization: "Bearer " + token }
         });
 

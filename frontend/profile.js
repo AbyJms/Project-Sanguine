@@ -3,7 +3,7 @@
   if (!t) return;
 
   try {
-    const r = await fetch("http://localhost:5000/api/profile", {
+    const r = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/profile", {
       headers: { Authorization: "Bearer " + t }
     });
 

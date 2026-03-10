@@ -6,7 +6,7 @@ async function loadData() {
 
   try {
     // 1. Load Cities/Districts
-    const cityRes = await fetch("http://localhost:5000/api/cities");
+    const cityRes = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/cities");
     allCities = await cityRes.json();
 
     const dSel = document.getElementById("eDistrict");
@@ -18,7 +18,7 @@ async function loadData() {
     });
 
     // 2. Load Profile Data
-    const r = await fetch("http://localhost:5000/api/profile", {
+    const r = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/profile", {
       headers: { Authorization: "Bearer " + token }
     });
     if (!r.ok) return;
@@ -63,7 +63,7 @@ async function saveChanges() {
   const city_id = document.getElementById("eCity").value;
 
   const token = localStorage.getItem("token");
-  const res = await fetch("http://localhost:5000/api/profile/update", {
+  const res = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + "/api/profile/update", {
     method: "POST",
     headers: { 
       "Content-Type": "application/json",
