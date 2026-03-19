@@ -53,7 +53,7 @@ async function updateStatus(pk) {
     const status = document.getElementById(`status-${pk}`).value;
 
     try {
-        const res = await fetch(`http://localhost:5000/api/hospital/requests/${pk}/status`, {
+        const res = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + `/api/hospital/requests/${pk}/status`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

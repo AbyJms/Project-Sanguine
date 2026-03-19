@@ -51,7 +51,7 @@
         currentRole = role;
         const token = localStorage.getItem("token");
         try {
-          const res = await fetch(`http://localhost:5000/api/admin/users/${role}`, {
+          const res = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + `/api/admin/users/${role}`, {
             headers: { Authorization: "Bearer " + token }
           });
           
@@ -89,7 +89,7 @@
 
         const token = localStorage.getItem("token");
         try {
-          const res = await fetch(`http://localhost:5000/api/admin/users/${id}`, {
+          const res = await fetch((window.location.hostname === "localhost" ? "http://localhost:5000" : "") + `/api/admin/users/${id}`, {
             method: "DELETE",
             headers: { Authorization: "Bearer " + token }
           });
