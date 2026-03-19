@@ -2,24 +2,46 @@
 <html>
   <head>
     <title>Sanguine - Check Eligibility</title>
-    <!-- <link rel="stylesheet" href="../css/style.css" /> -->
-    <link rel="stylesheet" href="userstyle.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      .status-message {
+        padding: 20px;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        margin-top: 20px;
+      }
+      .eligible {
+        background: #e6f4ea;
+        color: #2b9348;
+        border: 2px solid #2b9348;
+      }
+      .not-eligible {
+        background: #fdeaea;
+        color: #8b0000;
+        border: 2px solid #8b0000;
+      }
+    </style>
   </head>
   <body>
     <div class="sidebar">
-      <h1>Sanguine</h1>
+      <h2>Sanguine</h2>
       <a href="home.html">Home</a>
       <a href="profile.html">Profile</a>
       <a href="history.html">History</a>
       <a href="notifications.html">Notifications</a>
+      <a href="#" onclick="logout(); return false;" style="margin-top: auto;">Logout</a>
     </div>
 
     <div class="main">
-      <div class="card">
-        <h2>Check Donation Eligibility</h2>
-
-        <label for="lastDonation">Last Donation Date:</label>
-        <input type="date" id="lastDonation" />
+      <h1>Check Donation Eligibility</h1>
+      
+      <div class="form-container small">
+        <div class="form-group">
+          <label for="lastDonation">Last Donation Date:</label>
+          <input type="date" id="lastDonation" />
+        </div>
 
         <button onclick="checkEligibility()">Check Status</button>
 
@@ -28,6 +50,8 @@
       </div>
     </div>
 
+    <script src="../auth.js"></script>
+    <script src="../logout.js"></script>
     <script>
       function checkEligibility() {
         const lastDonation = document.getElementById("lastDonation").value;

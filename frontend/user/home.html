@@ -9,7 +9,7 @@
 <body>
 
     <div class="sidebar">
-        <h1>Sanguine</h1>
+        <h2>Sanguine</h2>
         <a href="home.html">Home</a>
         <a href="profile.html">Profile</a>
         <a href="history.html">History</a>
@@ -20,19 +20,18 @@
     <div class="main">
         <h1>Welcome, <span id="loggedUser">User</span></h1>
 
-        <div class="card">
-            <h2>REQUEST BLOOD</h2>
-            <p>Submit a request for blood by specifying quantity and location.</p>
-            <button onclick="location.href='request.html'">Request Now</button>
+        <div class="dashboard-grid">
+            <div class="card" onclick="location.href='request.html'" style="cursor: pointer;">
+                <h3 style="color: #8b0000; margin-bottom: 10px;">Request Blood</h3>
+                <p style="font-size: 14px; color: #666;">Submit a request for blood by specifying quantity and location.</p>
+            </div>
+
+            <div class="card" onclick="location.href='check_status.html'" style="cursor: pointer;">
+                <h3 style="color: #8b0000; margin-bottom: 10px;">View Eligibility Status</h3>
+                <p style="font-size: 14px; color: #666;">Check your donation cool-down status.</p>
+            </div>
         </div>
 
-        <div class="card">
-            <h2>View Eligibility Status</h2>
-            <p>Check your donation cool-down status.</p>
-            <button onclick="location.href='check_status.html'">Check Status</button>
-        </div>
-
-    </div>
     </div>
 
     <script src="../auth.js"></script>
