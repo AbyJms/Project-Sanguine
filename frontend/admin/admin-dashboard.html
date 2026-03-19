@@ -21,42 +21,42 @@
     <h1>ADMIN DASHBOARD</h1>
 
     <!-- ================= STACKED GRAPH (FULL WIDTH TOP) ================= -->
-    <div class="graph-section" style="width: 100%;">
-      <h2>District-wise Donor Distribution</h2>
-      <div class="graph-card" style="height: 450px;">
+    <div style="width: 100%; margin-bottom: 30px;">
+      <h2 style="margin-bottom: 20px; color: #8b0000;">District-wise Donor Distribution</h2>
+      <div class="card" style="height: 480px; padding: 30px;">
         <canvas id="hospitalChart"></canvas>
       </div>
     </div>
 
     <!-- ================= BOTTOM SECTION: OVERVIEW + CARDS ================= -->
-    <div style="display: flex; gap: 30px; align-items: flex-start;">
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; width: 100%;">
       
       <!-- System Overview (Left) -->
-      <div class="graph-section" style="width: 65%; flex-shrink: 0;">
-        <h2>System Overview</h2>
-        <div class="graph-card" style="height: 350px;">
+      <div>
+        <h2 style="margin-bottom: 20px; color: #8b0000;">System Overview</h2>
+        <div class="card" style="height: 400px; padding: 30px;">
           <canvas id="statsChart"></canvas>
         </div>
       </div>
 
       <!-- Quick Actions (Right) -->
-      <div style="width: 35%; flex-grow: 1;">
+      <div>
         <h2 style="margin-bottom: 20px; color: #8b0000;">Quick Actions</h2>
-        <div class="dashboard-action-cards" style="display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; flex-direction: column; gap: 20px;">
           
-          <div class="card compact" onclick="location.href='register-hospital.html'" style="cursor: pointer; padding: 25px; border-radius: 15px;">
-            <h3>Register Hospital</h3>
-            <p>Add new hospital details.</p>
+          <div class="card" onclick="location.href='register-hospital.html'" style="cursor: pointer; padding: 25px; margin-bottom: 0;">
+            <h3 style="color: #8b0000; margin-bottom: 10px;">Register Hospital</h3>
+            <p style="font-size: 14px; color: #666;">Add new hospital details.</p>
           </div>
 
-          <div class="card compact" onclick="location.href='register-admin.html'" style="cursor: pointer; padding: 25px; border-radius: 15px;">
-            <h3>Register New Admin</h3>
-            <p>Add a new admin to the system.</p>
+          <div class="card" onclick="location.href='register-admin.html'" style="cursor: pointer; padding: 25px; margin-bottom: 0;">
+            <h3 style="color: #8b0000; margin-bottom: 10px;">Register New Admin</h3>
+            <p style="font-size: 14px; color: #666;">Add a new admin to the system.</p>
           </div>
 
-          <div class="card compact" onclick="location.href='view-users.html'" style="cursor: pointer; padding: 25px; border-radius: 15px;">
-            <h3>View Users</h3>
-            <p>See all registered users.</p>
+          <div class="card" onclick="location.href='view-users.html'" style="cursor: pointer; padding: 25px; margin-bottom: 0;">
+            <h3 style="color: #8b0000; margin-bottom: 10px;">View Users</h3>
+            <p style="font-size: 14px; color: #666;">See all registered users.</p>
           </div>
 
         </div>
