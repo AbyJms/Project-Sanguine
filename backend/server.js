@@ -51,7 +51,7 @@ app.get("/api/profile", auth, async (req, res) => {
     if (role === "Client") {
       q = `
         SELECT u.username, c.name, c.blood_type, c.gmail, c.mobile_no,
-               ci.city_name, ci.district_name
+              ci.city_name, ci.district_name
         FROM users u
         JOIN client c ON c.id = u.id
         LEFT JOIN cities ci ON ci.city_id = c.city_id
@@ -60,7 +60,7 @@ app.get("/api/profile", auth, async (req, res) => {
     } else if (role === "Hospital") {
       q = `
         SELECT u.username, h.name, h.gmail, h.mobile_no,
-               ci.city_name, ci.district_name
+              ci.city_name, ci.district_name
         FROM users u
         JOIN hospital h ON h.id = u.id
         LEFT JOIN cities ci ON ci.city_id = h.city_id
@@ -112,7 +112,7 @@ app.post("/api/request", auth, async (req, res) => {
     // 3. Insert into request table
     await db.query(
       `INSERT INTO request (acceptor, acceptor_name, mobile_no, blood, quantity, district_id, city_id, status) 
-       VALUES ($1, $2, $3, $4, $5, $6, $7, 'Pending')`,
+      VALUES ($1, $2, $3, $4, $5, $6, $7, 'Pending')`,
       [username, u.name, u.mobile_no, u.blood_type, quantity, district_id, city_id]
     );
 
@@ -519,32 +519,57 @@ app.post("/api/register/hospital", auth, async (req, res) => {
   }
 });
 
-// Admin - Register New Admin
 app.post("/api/register/admin", auth, async (req, res) => {
-  if (req.user.role !== "Admin") return res.status(403).json({ msg: "Forbidden" });
-  
-  // RESTRICTION: Only Head Admin can register other admins
-  if (!req.user.is_head_admin) {
-    return res.status(403).json({ msg: "Only Head Admin can register other admins" });
-  }
-
   const client = await db.connect();
+
   try {
     const { name, username, password } = req.body;
+
+    // 1. Check role
+    if (req.user.role !== "Admin") {
+      return res.status(403).json({ msg: "Forbidden" });
+    }
+
+    // 2. Check if HEAD ADMIN (from DB, not token)
+    const adminCheck = await client.query(
+      "SELECT is_head_admin FROM admin WHERE id = $1",
+      [req.user.id]
+    );
+
+    if (!adminCheck.rows.length || !adminCheck.rows[0].is_head_admin) {
+      return res.status(403).json({ msg: "Only Head Admin can register admins" });
+    }
+
+    // 3. Check duplicate username
+    const existingUser = await client.query(
+      "SELECT * FROM users WHERE username = $1",
+      [username]
+    );
+
+    if (existingUser.rows.length > 0) {
+      return res.status(400).json({ msg: "Username already exists" });
+    }
+
     await client.query("BEGIN");
 
+    // 4. Insert into users
     const userRes = await client.query(
       "INSERT INTO users (username, password, role) VALUES ($1, $2, 'Admin') RETURNING id",
       [username, password]
     );
 
+    const userId = userRes.rows[0].id;
+
+    // 5. Insert into admin
     await client.query(
-      "INSERT INTO admin (id, name, is_head_admin) VALUES ($1, $2, false)",
-      [userRes.rows[0].id, name]
+      "INSERT INTO admin (id, name, is_head_admin) VALUES ($1, $2, FALSE)",
+      [userId, name]
     );
 
     await client.query("COMMIT");
-    res.json({ msg: "Admin registered" });
+
+    res.json({ msg: "Admin registered successfully" });
+
   } catch (err) {
     await client.query("ROLLBACK");
     res.status(500).json({ error: err.message });
