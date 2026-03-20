@@ -1,5 +1,34 @@
 console.log("JS LOADED");
+
 let allCities = [];
+
+// ✅ THIS MUST BE HERE (TOP LEVEL)
+async function register() {
+  const name = document.getElementById("name").value;
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+  const gmail = document.getElementById("gmail").value;
+  const mobile_no = document.getElementById("mobile_no").value;
+  const city_id = document.getElementById("city").value;
+  const blood_type = document.querySelector('input[name="blood"]:checked')?.value;
+
+  if (!blood_type) return alert("Please select blood type");
+
+  const res = await fetch("/api/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, username, password, gmail, mobile_no, city_id, blood_type })
+  });
+
+  const data = await res.json();
+
+  if (res.ok) {
+    alert("Registration successful!");
+    location.href = "login.html";
+  } else {
+    alert(data.error || data.msg);
+  }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -9,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const districtSelect = document.getElementById("district");
     const districts = [...new Set(allCities.map(c => c.district_name))];
-    
+
     districts.forEach(d => {
       const opt = document.createElement("option");
       opt.value = d;
